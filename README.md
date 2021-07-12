@@ -34,3 +34,33 @@ vim .ssh/authorized_keys
 `vim /etc/ansible/hosts`
 #### 6. Write here your `IP addresses` of the hosts at the bottom of the file in this format and save and exit vim
 ![ip insert](https://user-images.githubusercontent.com/77927449/125205280-4760b980-e2a3-11eb-8a38-7fe8dd3ff3e6.png)
+
+#### 7. `Ad-hoc` Commands & Modules in Ansible
+> Example 1: Use the ping module to check if a host can be pinged
+```bash
+ansible ip-192.168.x-x -m ping
+```
+![ansible_ip](https://user-images.githubusercontent.com/77927449/125313677-49845000-e357-11eb-8729-0313d0c7c2bc.png)
+> Example 2: Create a new user by using the user module
+```bash
+ansible ip-172-31-12-148 -m user -a "name=demouser state=present"
+```
+![ansible demo user](https://user-images.githubusercontent.com/77927449/125313717-56a13f00-e357-11eb-8c7e-2776c4de1196.png)
+
+#### 8. `Ad-hoc` Commands & Modules in Ansible (cont)
+> Check if demouser has been created in host
+```bash
+id demouser
+```
+#### 9. Install a package on the host machine using apt module
+```bash 
+ansible ip-172-31-12-148 -m apt -a "name=finger state=present update_cache=true"
+```
+
+#### 10. Check on the host machine if `finger` was installed by typing finger To run a module on all the hosts use “all” instead of IP address
+```bash
+ansible all -m apt -a "name=finger state=present update_cache=true"
+```
+
+
+
