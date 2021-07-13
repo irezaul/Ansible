@@ -61,6 +61,19 @@ ansible ip-172-31-12-148 -m apt -a "name=finger state=present update_cache=true"
 ```bash
 ansible all -m apt -a "name=finger state=present update_cache=true"
 ```
+##### * Create and Execute a Playbook
 
+#### 11. Change directory to /etc/ansible: 
+```bash
+cd /etc/ansible
+```
+#### 12. Use vim editor to write a playbook: 
+```bash
+vim demoplaybook.yaml
+```
+#### 13. Type this command to execute the play: 
+```bash
+ansible-playbook demoplaybook.yaml
+```
 
 
