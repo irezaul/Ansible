@@ -105,3 +105,22 @@ sudo rm /var/cache/apt/archives/lock
 sudo rm /var/lib/dpkg/lock
 ```
 #### [ ] now install your any packages 
+
+### * Here a demo install java by playbook 
+![Java playbook](https://user-images.githubusercontent.com/77927449/126518037-f4664e0a-0079-468d-bb33-2c9494a848ab.png)
+
+> install process done
+![Install java by playbook_yaml](https://user-images.githubusercontent.com/77927449/126518122-0f9ff347-be00-40f1-bb73-df161ecb7b73.png)
+![Java install done on host](https://user-images.githubusercontent.com/77927449/126518439-3b8ff114-3554-40ce-b178-ab00b4b1f3fa.png)
+
+
+
+
+##  `Important` for java 
+##### If we have a package or software installed in two versions, then it is a command to see
+```bash
+alternatives --config (packagename)
+like---
+alternatives --config java
+
+```
