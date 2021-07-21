@@ -12,6 +12,10 @@ sudo apt-get install ansible
 ```bash
 ssh-keygen
 ```
+#### this keyfile generate on `root` folder 
+```bash
+cd root/.ssh
+```
 ![rsa_key](https://user-images.githubusercontent.com/77927449/125205038-18961380-e2a2-11eb-8aef-57a7c89cef60.png)
 > (press enter for all options)
 #### 4. To copy the public key type command
