@@ -115,12 +115,3 @@ sudo rm /var/lib/dpkg/lock
 
 
 
-
-##  `Important` for java 
-##### If we have a package or software installed in two versions, then it is a command to see
-```bash
-alternatives --config (packagename)
-like---
-alternatives --config java
-
-```
