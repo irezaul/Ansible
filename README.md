@@ -79,5 +79,29 @@ vim demoplaybook.yaml
 ```bash
 ansible-playbook demoplaybook.yaml
 ```
+### * if you get any `error` like this don't panic just follow the instruction-
+> E: Could not get lock /var/lib/dpkg/lock – open (11: Resource temporarily unavailable)
+E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?
 
-
+##### check the process (package manager for handling software). Use this command:
+```bash 
+ps aux | grep -i apt
+```
+> If you see that apt is being used by a program like `apt.systemd.daily update`,
+#### Method 1
+```bash
+sudo killall apt apt-get
+```
+#### Method 2 
+```bash 
+sudo lsof /var/lib/dpkg/lock
+sudo lsof /var/lib/apt/lists/lock
+sudo lsof /var/cache/apt/archives/lock
+```
+#### You can now safely remove the lock files using the commands below:
+```bash
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
+```
+#### [ ] now install your any packages 
