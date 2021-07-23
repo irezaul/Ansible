@@ -119,3 +119,39 @@
   ### Successfully run on host - check by `hostip:8080`
   ![run_on_host](https://github.com/irezaul/Ansible/blob/main/Tomcat%20install%20task/tomcat%20download%20extract%20%26%20startup/successfully%20run%20on%20host.png)
   
+  
+  ## Method two in one file `multiple task` execute 
+  > Here the command
+  ```bash
+  ---
+- name: Download tomcat from server
+  hosts: 192.168.1.11
+  gather_facts: false
+  become: yes
+  vars:
+          req_tomcat_ver: 9.0.50
+          tomcat_url: https://downloads.apache.org/tomcat/tomcat-{{req_tomcat_ver.split('.')[0]}}/v{{req_tomcat_ver}}/bin/apache-tomcat-{{req_tomcat_ver}}.tar.gz
+
+  tasks:
+          - name: Download tomcat_apache on host...
+            get_url:
+                    url: "{{tomcat_url}}"
+                    dest: /usr/local
+
+          - name: Extracting tomcat tar file....
+            unarchive:
+                    src: /usr/local/apache-tomcat-{{req_tomcat_ver}}.tar.gz
+                    dest: /usr/local
+                    remote_src: yes
+
+          - name: Starting Tomcat on host...
+            shell: nohup /usr/local/apache-tomcat-9.0.50/bin/startup.sh &
+  ```
+  > save it & run 
+  
+  # Enjoy 
+  
+  [i love master-academy](https://www.facebook.com/masteracadmy) | 
+  [always helpful group](https://www.facebook.com/groups/codingbootcampbd)
+  
+  
