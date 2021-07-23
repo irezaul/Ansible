@@ -115,3 +115,4 @@ sudo rm /var/lib/dpkg/lock
 
 
 
+[install tomcat apache](https://github.com/irezaul/Ansible/tree/main/Tomcat%20install%20task)
