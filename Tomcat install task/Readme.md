@@ -155,3 +155,63 @@
   [always helpful group](https://www.facebook.com/groups/codingbootcampbd)
   
   
+  # Now how to install Apache-Tomcat by a role 
+  > create or init a role on your destination or patch then type a command to create role directory 
+  ```bash
+  ansible-galaxy init tomcat
+  ```
+  > then go to role folder what you name define ( so i create here - `etc/ansible/playbook/roles/tomcat/tasks/`) then open the `main.yaml` file by vim editor. 
+  ```bash
+  vim main.yaml
+  ```
+  #### Here now define the task what we do or what we need . I'm shared my task see 
+  ```bash
+  - name: Updateing repos
+  apt:
+          name: "*"
+          state: latest
+- name: Install java require
+  apt:
+          name: openjdk-8-jre
+          state: present
+
+- name: Download tomcat package
+  command: "wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.50/bin/apache-tomcat-9.0.50.tar.gz"
+  args:
+     chdir: /tmp/
+
+- name: Extract Tomcat archive
+  command: tar zxvf /tmp/apache-tomcat-9.0.50.tar.gz -C /opt/
+  args:
+     chdir: /tmp/
+#- name: Stop Tomcat
+#  command: nohup /opt/apache-tomcat-8.5.40/bin/shutdown.sh
+
+- name: Start Tomcat
+  command: nohup /opt/apache-tomcat-9.0.50/bin/startup.sh &
+  ```
+  ![tomcat tasks yaml file](https://user-images.githubusercontent.com/77927449/126906610-62a9ad22-d22a-4307-9cbf-82155e9a8f11.png)
+
+  ### Now go back to the role folder what we init here i create a master.yaml 
+  ![master yaml](https://user-images.githubusercontent.com/77927449/126906715-ab770bc0-33b1-42bf-86b9-730feb6e729e.png)
+> now edit this file with vim editor
+  ```bash
+  ---
+- hosts: 192.168.1.109
+  gather_facts: true
+  become: true
+  become_method: sudo
+  roles:
+          - tomcat
+  ```
+  ![Master yaml edit](https://user-images.githubusercontent.com/77927449/126906814-77e178e6-f48f-45e7-bdf4-c58ac8a66fb8.png)
+  
+#### Now we're ready to play this file ...
+  
+ ```bash
+  ansible-playbook master.yaml
+  ```
+  ![create tomcat_role done](https://user-images.githubusercontent.com/77927449/126906889-19a127df-4648-48da-93a5-908b61c8efd0.png)
+
+  
+  
