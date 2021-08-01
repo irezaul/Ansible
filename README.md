@@ -106,7 +106,7 @@ sudo rm /var/lib/dpkg/lock
 ```
 #### [ ] now install your any packages 
 
-### * Here a demo install java by playbook 
+### * Here a demo install java by playbook -
 ![Java playbook](https://user-images.githubusercontent.com/77927449/126518037-f4664e0a-0079-468d-bb33-2c9494a848ab.png)
 
 > install process done
